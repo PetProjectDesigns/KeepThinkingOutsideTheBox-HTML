@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 03: HTML Tags & Element Syntax</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400&family=Roboto:wght@400&family=Inconsolata:wght@400&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- CSS Variables --- */
+        :root {
+            --color-bg-body: #FFFFFF;
+            --color-text: #1A1A1A;
+            --color-accent: #000000;
+            --color-border: #DDDDDD;
+            --color-code-bg: #F5F5F5;
+            --color-highlight: #EEEEEE;
+            --font-family-main: 'Merriweather','Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            --font-family-code: 'Inconsolata','Consolas', 'Courier New', monospace;
+        }
+
+        body.dark-mode {
+            --color-bg-body: #121212;
+            --color-text: #E0E0E0;
+            --color-accent: #FAFAFA;
+            --color-border: #333333;
+            --color-code-bg: #222222;
+            --color-highlight: #333333;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: var(--font-family-main);
+            line-height: 1.7;
+            color: var(--color-text);
+            background-color: var(--color-bg-body);
+            padding: 20px;
+            transition: background-color 0.3s, color 0.3s;
+            min-height: 100vh;
+        }
+
+        .container { max-width: 900px; margin: 0 auto; background: var(--color-bg-body); padding: 30px; }
+
+        header { border-bottom: 2px solid var(--color-accent); padding-bottom: 10px; margin-bottom: 30px; display: flex; justify-content: space-between; align-items: center; }
+
+        h1 { font-size: 2.2rem; color: var(--color-accent); }
+
+        .theme-toggle-btn { padding: 8px 15px; border: 1px solid var(--color-accent); background-color: transparent; color: var(--color-text); cursor: pointer; border-radius: 6px; font-weight: bold; }
+
+        h2 { font-size: 1.8rem; color: var(--color-accent); margin-top: 30px; margin-bottom: 15px; border-bottom: 2px solid var(--color-border); padding-bottom: 5px; }
+        
+        h3 { font-size: 1.4rem; color: var(--color-accent); margin-top: 25px; margin-bottom: 10px; border-left: 5px solid var(--color-accent); padding-left: 10px; }
+
+        .content-table { width: 100%; border-collapse: collapse; margin: 25px 0; border: 1px solid var(--color-border); }
+        .content-table thead tr { background-color: var(--color-accent); color: var(--color-bg-body); }
+        .content-table th, .content-table td { padding: 12px 15px; border: 1px solid var(--color-border); }
+        .content-table tbody tr:nth-of-type(even) { background-color: var(--color-code-bg); }
+
+        .interactive-section { border: 2px dashed var(--color-accent); padding: 25px; margin: 30px 0; border-radius: 8px; text-align: center; background-color: var(--color-highlight); }
+        .run-button { padding: 10px 20px; background-color: var(--color-accent); color: var(--color-bg-body); border: none; border-radius: 4px; cursor: pointer; font-weight: bold; }
+
+        #result-output { 
+            margin-top: 20px; 
+            padding: 15px; 
+            border: 1px solid var(--color-accent); 
+            background-color: var(--color-bg-body); 
+            min-height: 60px;
+            text-align: center;
+        }
+
+        .code-block { background-color: var(--color-code-bg); border: 1px solid var(--color-border); padding: 15px; margin: 15px 0; border-radius: 6px; }
+        pre { font-family: var(--font-family-code); line-height: 1.5; }
+        .keyword { font-weight: bold; color: #005cc5; } 
+        .string { color: #d73a49; } 
+        .comment { opacity: 0.6; font-style: italic; }
+
+        .explanation-box { padding: 15px; border-left: 5px solid var(--color-accent); background-color: var(--color-highlight); margin-top: 15px; font-style: italic; }
+        footer { text-align: center; padding-top: 20px; margin-top: 40px; border-top: 1px solid var(--color-border); font-size: 0.9rem; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Tags & Element Syntax</h1>
+            <button id="theme-toggle" class="theme-toggle-btn">
+                <span class="icon">☀️</span> <span class="text">Dark Mode</span>
+            </button>
+        </header>
+
+        <section id="introduction">
+            <h2>Understanding the Building Blocks</h2>
+            <p>In HTML, we use <strong>tags</strong> to tell the browser how to display content. When you combine tags with the content inside them, you create an <strong>element</strong>. Think of tags as the "instructions" and the element as the "final product."</p>
+            <div class="explanation-box">
+                <strong>The Sandwich Analogy:</strong> The opening and closing tags are like the two slices of bread. The content inside is the filling. You need all three parts to have a complete sandwich (an element).
+            </div>
+        </section>
+
+        <section id="example-code">
+            <h2>Basic Syntax Anatomy</h2>
+            <p>Every standard HTML element follows a specific pattern. It starts with an opening tag, contains content, and ends with a closing tag (marked by a forward slash).</p>
+            
+            <div class="code-block">
+                <pre>
+<span class="keyword">&lt;!DOCTYPE html&gt;</span>
+<span class="keyword">&lt;html&gt;</span>
+<span class="keyword">  &lt;head&gt;</span>
+<span class="keyword">    &lt;title&gt;</span><span class="string">My Web Page Title</span><span class="keyword">&lt;/title&gt;</span>
+<span class="keyword">  &lt;/head&gt;</span>
+<span class="keyword">  &lt;body&gt;</span>
+<span class="comment">    /* This is where the main content of your webpage will go */</span>
+<span class="keyword">    &lt;h1&gt;</span><span class="string">This is a Heading</span><span class="keyword">&lt;/h1&gt;</span>
+<span class="keyword">    &lt;p&gt;</span><span class="string">Hello World!  This is a paragraph.</span><span class="keyword">&lt;/p&gt;</span>
+<span class="keyword">  &lt;/body&gt;</span>
+<span class="keyword">&lt;/html&gt;</span>
+                </pre>
+            </div>
+        </section>
+
+        <section id="live-demo">
+            <h2>The "Renderer" Demo</h2>
+            <p>See how the browser takes raw code and turns it into something visual. Click the button to "render" the HTML element below.</p>
+
+            <div class="interactive-section">
+                <div style="margin-bottom: 10px; font-family: var(--font-family-code);">&lt;p&gt;Hello World!&lt;/p&gt;</div>
+                <button onclick="runConceptDemo()" class="run-button">
+                    Render Element
+                </button>
+                
+                <div id="result-output">
+                    <em>Code view active...</em>
+                </div>
+            </div>
+        </section>
+
+        <section id="comparison-table">
+            <h2>Tags vs. Elements</h2>
+            <p>It’s easy to use these terms interchangeably, but they mean slightly different things to your browser.</p>
+            
+            <table class="content-table">
+                <thead>
+                    <tr>
+                        <th>Term</th>
+                        <th>What it is</th>
+                        <th>Example</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Tag</strong></td>
+                        <td>The individual markers (angle brackets).</td>
+                        <td><b>&lt;p&gt;</b> or <b>&lt;/p&gt;</b></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Element</strong></td>
+                        <td>The whole unit from start to finish.</td>
+                        <td><b>&lt;p&gt;Hello&lt;/p&gt;</b></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Content</strong></td>
+                        <td>The text or data inside the tags.</td>
+                        <td>"Hello"</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="key-takeaways">
+            <h2>Key Takeaways</h2>
+            <ul>
+                <li><strong>Always Close:</strong> Most tags need a closing tag <b>&lt;/tag&gt;</b> or the browser will get confused.</li>
+                <li><strong>Case Sensitivity:</strong> While not strictly required, always write tags in <strong>lowercase</strong> for modern web standards.</li>
+                <li><strong>Nesting:</strong> Elements can go inside other elements (like a box inside a box), but you must close them in the order they were opened.</li>
+            </ul>
+        </section>
+        
+        <footer>
+            <p>Keep Thinking Outside The Box: A Beginners Guide To HTML For ADHD Brains</p>
+        </footer>
+    </div>
+    
+    <script>
+        function runConceptDemo() {
+            const output = document.getElementById('result-output');
+            if (output.innerHTML.includes('Hello World!')) {
+                output.innerHTML = '<em>Code view active...</em>';
+            } else {
+                output.innerHTML = '<p style="font-size: 1.5rem; color: #4CAF50; font-weight: bold;">Hello World!</p>';
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const toggleButton = document.getElementById('theme-toggle');
+            const body = document.body;
+
+            toggleButton.addEventListener('click', () => {
+                const isDark = body.classList.toggle('dark-mode');
+                toggleButton.querySelector('.icon').textContent = isDark ? '🌙' : '☀️';
+                toggleButton.querySelector('.text').textContent = isDark ? 'Light Mode' : 'Dark Mode';
+            });
+        });
+    </script>
+</body>
+</html>
