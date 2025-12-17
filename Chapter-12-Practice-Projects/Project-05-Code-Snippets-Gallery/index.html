@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Code Snippets Gallery</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <h1>Code Snippets Gallery</h1>
+
+  <div class="snippet-form">
+    <h2>Add a New Snippet</h2>
+    <input type="text" id="title" placeholder="Snippet Title" />
+    <textarea id="code" rows="6" placeholder="Enter your code here..."></textarea>
+    <button onclick="addSnippet()">Add Snippet</button>
+    <p class="tip">Tip: Save your snippets to a folder like <code>snippets-gallery/</code> so you can publish them later!</p>
+  </div>
+
+  <button class="download-all" onclick="downloadAllSnippets()">Download All Snippets</button>
+
+  <div class="snippet-list" id="snippetList">
+    <h2>Saved Snippets</h2>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

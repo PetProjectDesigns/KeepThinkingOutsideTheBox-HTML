@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Time Tools</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main>
+    <h1>🧭 Time Tools</h1>
+
+    <section id="current-time">
+      <h2>Current Time</h2>
+      <div class="display" id="clock">--:--:--</div>
+    </section>
+
+    <section id="stopwatch">
+      <h2>Stopwatch</h2>
+      <div class="display" id="stopwatch-display">00:00:00</div>
+      <button onclick="startStopwatch()">Start</button>
+      <button onclick="stopStopwatch()">Stop</button>
+      <button onclick="resetStopwatch()">Reset</button>
+    </section>
+
+    <section id="countdown">
+      <h2>Countdown Timer</h2>
+      <input type="number" id="countdown-minutes" placeholder="Minutes" />
+      <div class="display" id="countdown-display">00:00</div>
+      <button onclick="startCountdown()">Start</button>
+      <button onclick="resetCountdown()">Reset</button>
+    </section>
+
+    <section id="pomodoro">
+      <h2>Pomodoro Timer</h2>
+      <div class="display" id="pomodoro-display">25:00</div>
+      <button onclick="startPomodoro()">Start Work</button>
+      <button onclick="startBreak()">Start Break</button>
+      <button onclick="resetPomodoro()">Reset</button>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
