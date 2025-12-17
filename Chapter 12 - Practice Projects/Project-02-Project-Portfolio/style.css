@@ -1,0 +1,242 @@
+:root{
+  --bg: #ffffff;
+  --text: #111;
+  --muted: #6b7280;
+  --card-shadow: rgba(16,24,40,0.06);
+  --accent: #111;
+  --radius: 12px;
+  --gap: 18px;
+  font-family: "Noto Sans", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  color-scheme: light;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}\nbody{
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  line-height:1.45;
+  font-weight:400;
+}
+
+.container{
+  width:100%;
+  max-width:1100px;
+  margin:0 auto;
+  padding:24px;
+}
+
+/* Header */
+.site-header{
+  border-bottom:1px solid #eef0f2;
+  background:transparent;
+}
+.site-title{
+  margin:8px 0 0 0;
+  font-weight:700;
+  letter-spacing:-0.02em;
+  font-size:20px;
+}
+.site-sub{
+  margin:6px 0 18px 0;
+  color:var(--muted);
+  font-size:14px;
+}
+
+/* Gallery */
+.gallery{
+  display:grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap:var(--gap);
+  padding-bottom:50px;
+}
+
+/* Card */
+.card{
+  background:var(--bg);
+  border-radius:var(--radius);
+  box-shadow:0 0 0 1px rgba(0,0,0,0.02), 0 3px 6px -2px var(--card-shadow);
+  overflow:hidden;
+  cursor:pointer;
+  display:flex;
+  flex-direction:column;
+  min-height:300px; /* Ensure a minimum height for better layout */
+}
+
+.card-media{
+  aspect-ratio: 16 / 9; /* Standard aspect ratio for media */
+  overflow: hidden;
+  position: relative;
+}
+
+/* Optimized image loading: we just ensure the image fills the container */
+.card-img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+  opacity: 1; /* Images are loaded immediately or by native lazy-load */
+  transition: opacity 0.3s ease-in-out;
+}
+
+.card-info{
+  padding:14px;
+  flex-grow: 1;
+  display:flex;
+  flex-direction:column;
+}
+.card-title{
+  margin:0 0 4px 0;
+  font-weight:600;
+  font-size:18px;
+}
+.card-desc{
+  margin:0;
+  color:var(--muted);
+  font-size:14px;
+  flex-grow: 1;
+}
+.card-meta{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-top:10px;
+  font-size:12px;
+  color:var(--muted);
+}
+.card-tags{
+  display:flex;
+  gap:6px;
+}
+.tag{
+  background: #f3f4f6;
+  padding:3px 8px;
+  border-radius:4px;
+  font-size:11px;
+  font-weight:600;
+  color:var(--text);
+}
+
+/* Modal */
+.modal{
+  position:fixed;
+  inset:0;
+  z-index:1000;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  pointer-events:none;
+  opacity:0;
+  transition: opacity .15s ease-out;
+}
+.modal[aria-hidden='false']{
+  pointer-events:auto;
+  opacity:1;
+}
+
+.modal-backdrop{
+  position:absolute;
+  inset:0;
+  background:rgba(0,0,0,0.4);
+}
+.modal-panel{
+  position:relative;
+  background:var(--bg);
+  border-radius:var(--radius);
+  max-width:90%;
+  max-height:90%;
+  overflow:auto;
+  box-shadow:0 20px 60px rgba(10,20,40,0.15);
+  z-index:2;
+  animation:modalIn .22s cubic-bezier(.2,.9,.2,1);
+}
+@keyframes modalIn {
+  from { transform: translateY(10px) scale(.995); opacity:0 }
+  to { transform: translateY(0) scale(1); opacity:1 }
+}
+.modal-close{
+  position:absolute;
+  right:12px;
+  top:12px;
+  background:transparent;
+  border:0;
+  font-size:28px;
+  line-height:1;
+  cursor:pointer;
+  color:var(--muted);
+}
+.modal-content{
+  padding:22px;
+  display:grid;
+  grid-template-columns: 1fr 320px;
+  gap:18px;
+}
+.modal-media{
+  border-radius:10px;
+  /* Removed background-image styles as we use an <img> now */
+  min-height:320px;
+  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.02);
+  overflow: hidden;
+}
+/* Style the actual <img> tag inside the modal media container */
+.modal-media .modal-img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+  border-radius:8px;
+  min-height:320px;
+}
+.modal-info{
+  padding:12px 6px;
+}
+.modal-info h2{
+  margin-top:0;
+}
+.modal-desc{
+  margin-top:10px;
+  color:var(--muted);
+}
+.modal-year{
+  font-size:14px;
+  color:var(--muted);
+  margin-bottom:15px;
+}
+.modal-tags{
+  display:flex;
+  gap:8px;
+  margin-bottom:15px;
+}
+.modal-tags .tag{
+  font-size:12px;
+  padding:4px 10px;
+}
+.modal-link{
+  display:inline-block;
+  margin-top:20px;
+  padding:10px 20px;
+  background:var(--accent);
+  color:var(--bg);
+  text-decoration:none;
+  border-radius:6px;
+  font-weight:600;
+}
+/* Responsive adjustments for mobile */
+@media (max-width: 768px) {
+  .modal-panel{
+    max-width: 100%;
+    max-height: 100%;
+    margin: 0;
+    border-radius: 0;
+  }
+  .modal-content{
+    grid-template-columns: 1fr;
+    gap: 10px;
+    padding: 15px;
+  }
+  .modal-info{
+    padding: 0;
+  }
+}

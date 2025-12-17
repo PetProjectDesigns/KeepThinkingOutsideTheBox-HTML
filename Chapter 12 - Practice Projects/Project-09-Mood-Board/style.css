@@ -1,0 +1,136 @@
+/* 🔑 BEGINNER NOTE: The * selector targets ALL elements. 
+   We reset default padding and margin for consistency across browsers. */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* 🔑 IMPORTANT: Includes padding/border in an element's total width/height. */
+}
+
+body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    background-color: #f4f4f9; /* A light, soft background */
+    color: #333;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #555;
+}
+
+/* 🧱 CSS GRID LAYOUT */
+#moodboard-container {
+    /* 🔑 BEGINNER NOTE: display: grid is essential for grid layout. */
+    display: grid;
+    /* 🔑 BEGINNER NOTE: This sets up 3 equal-width columns. */
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 20px; /* Space between grid items */
+    max-width: 1200px;
+    margin: 0 auto; /* Center the container */
+}
+
+/* 🖼️ General Mood Item Styling */
+.mood-item {
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    /* 🔑 BEGINNER NOTE: min-height ensures even empty boxes have some height */
+    min-height: 200px; 
+    transition: transform 0.2s; /* Nice hover effect */
+}
+
+.mood-item:hover {
+    transform: translateY(-5px); /* Lift item on hover */
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* 📐 GRID SPANNING (Making items take up more space) */
+.wide-item {
+    /* 🔑 BEGINNER NOTE: This item spans 2 columns. */
+    grid-column: span 2; 
+}
+
+.tall-item {
+    /* 🔑 BEGINNER NOTE: This item spans 2 rows. */
+    grid-row: span 2; 
+    display: flex; /* Helps align content vertically */
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* 🖼️ Image Specific Styling */
+.image-item {
+    background-color: #fff;
+    overflow: hidden; /* Keeps image sharp within the border-radius */
+}
+
+.image-item img {
+    width: 100%;
+    height: auto;
+    display: block; /* Removes any extra space below the image */
+    border-radius: 5px;
+}
+
+.caption {
+    margin-top: 10px;
+    font-style: italic;
+    color: #666;
+    font-size: 0.9em;
+}
+
+/* 💬 Quote Specific Styling */
+.quote-item {
+    background-color: #d1e8ff; /* Light blue background for quotes */
+    border-left: 5px solid #007bff; /* Accent border */
+    text-align: center;
+    padding: 30px;
+}
+
+.quote-item h2 {
+    font-size: 1.5em;
+    margin-bottom: 15px;
+    line-height: 1.4;
+    font-weight: 300;
+}
+
+.quote-item cite {
+    display: block;
+    margin-top: 10px;
+    font-style: normal;
+    color: #007bff;
+}
+
+/* 🎨 Color Block Specific Styling */
+.color-block {
+    /* No background-color needed here, it's set inline in HTML for demonstration */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #fff; /* White text for contrast */
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+/* 📝 JS Interaction Styling */
+.js-interaction-item {
+    background-color: #e6ffed; /* Light green background */
+    text-align: center;
+}
+
+.js-interaction-item button {
+    background-color: #28a745; /* Green button */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer; /* 🔑 BEGINNER NOTE: Changes the mouse cursor to a pointer. */
+    margin-top: 15px;
+    font-size: 1em;
+    transition: background-color 0.3s;
+}
+
+.js-interaction-item button:hover {
+    background-color: #1e7e34;
+}

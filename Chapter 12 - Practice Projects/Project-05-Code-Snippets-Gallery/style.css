@@ -1,0 +1,77 @@
+body {
+  font-family: sans-serif;
+  background: #f4f4f4;
+  margin: 0;
+  padding: 2rem;
+}
+
+h1 {
+  text-align: center;
+}
+
+.snippet-form, .snippet-list {
+  max-width: 700px;
+  margin: 1rem auto;
+  background: white;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+textarea, input {
+  width: 100%;
+  margin: 0.5rem 0;
+  padding: 0.5rem;
+  font-family: monospace;
+}
+
+button {
+  padding: 0.5rem 1rem;
+  margin-top: 0.5rem;
+  cursor: pointer;
+}
+
+.snippet {
+  background: #eef;
+  padding: 1rem;
+  margin: 1rem 0;
+  border-radius: 6px;
+  position: relative;
+}
+
+.snippet pre {
+  white-space: pre-wrap;
+}
+
+.delete-btn {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  background: crimson;
+  color: white;
+  border: none;
+  padding: 0.3rem 0.6rem;
+  cursor: pointer;
+}
+
+.download-btn {
+  margin-top: 0.5rem;
+  background: #0077cc;
+  color: white;
+  border: none;
+}
+
+.download-all {
+  display: block;
+  margin: 1rem auto;
+  background: green;
+  color: white;
+  border: none;
+}
+
+.tip {
+  font-size: 0.9rem;
+  color: #555;
+  margin-top: 1rem;
+  text-align: center;
+}

@@ -1,0 +1,362 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+  <title>Jane Doe — Personal Bio</title>
+
+  <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0b1020">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    /* ======= Beginner note:
+       This small reset keeps browser defaults consistent across devices.
+       You can gradually customize it as you learn more. ======= */
+    :root{
+      --bg: #ffffff;
+      --surface: #f6f7fb;
+      --text: #0b1220;
+      --muted: #556;
+      --accent: #0066ff;
+      --radius: 12px;
+      --card-padding: 18px;
+      --max-width: 980px;
+    }
+
+    /* Dark theme variables (overrides) */
+    :root[data-theme="dark"]{
+      --bg: #071026;
+      --surface: #07162a;
+      --text: #e6eef8;
+      --muted: #9fb4d6;
+      --accent: #4da6ff;
+    }
+
+    /* ======= Page basics ======= */
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      /* Using 'Inter' as requested, with system fallbacks */
+      font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background:linear-gradient(180deg,var(--bg),var(--surface));
+      color:var(--text);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.45;
+      padding:28px;
+      display:flex;
+      justify-content:center;
+    }
+
+    /* Container constrains width and centers content */
+    .container{
+      width:100%;
+      max-width:var(--max-width);
+      display:grid;
+      gap:24px;
+      grid-template-columns: 320px 1fr; /* sidebar + main */
+      align-items:start;
+    }
+
+    /* ======= Responsive adjustments (Grid Layout) ======= */
+    @media (max-width:880px){
+      .container{
+        grid-template-columns: 1fr; /* stack sidebar and main content */
+      }
+      body{
+        padding:16px; /* Reduced padding on smaller screens */
+      }
+    }
+
+    /* ======= Header / nav (Responsiveness Fix) ======= */
+    header{
+      grid-column:1/-1; /* full width header */
+      display:flex;
+      align-items:center;
+      gap:12px;
+      justify-content:space-between;
+      flex-wrap: wrap; /* NEW: Allows items to wrap onto the next line */
+    }
+
+    .brand{display:flex;align-items:center;gap:12px}
+    .avatar{
+      width:56px;height:56px;border-radius:12px;flex:0 0 56px;
+      background:linear-gradient(135deg,var(--accent),#8cd7ff);
+      display:inline-grid;place-items:center;color:white;font-weight:700;
+      font-size:20px;
+    }
+
+    nav[role="navigation"] ul{
+      display:flex;gap:12px;margin:0;padding:0;list-style:none;
+    }
+    nav a{
+      color:var(--text);text-decoration:none;padding:8px 10px;border-radius:8px;font-weight:600;
+    }
+    nav a:focus, nav a:hover{outline:2px solid rgba(0,0,0,0.06)}
+
+    /* Theme toggle button and resume link */
+    .controls{display:flex;gap:8px;align-items:center}
+    .btn{
+      background:transparent;border:1px solid rgba(0,0,0,0.06);padding:8px 10px;border-radius:10px;
+      cursor:pointer;font-weight:600;color:var(--text);
+      /* Ensure buttons don't shrink smaller than content */
+      flex-shrink: 0;
+    }
+    .btn:focus{outline:3px solid rgba(0,102,255,0.18)}
+
+    /* Smaller screen header stacking */
+    @media (max-width:550px){
+      header{
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+      }
+      .controls{
+        width: 100%; /* Make buttons span the full width */
+        justify-content: space-between;
+        margin-top: -8px; /* Pull up a bit closer to brand info */
+      }
+      /* Optional: stack nav links vertically for tiny screens */
+      nav[role="navigation"] ul{
+        /* width: 100%; display: grid; grid-template-columns: repeat(3, 1fr); */
+      }
+    }
+
+
+    /* ======= Sidebar (Profile card) ======= */
+    .profile{
+      background:var(--surface);
+      border-radius:var(--radius);
+      padding:var(--card-padding);
+      box-shadow:0 6px 18px rgba(12,20,40,0.06);
+    }
+    .profile h1{margin:6px 0 2px;font-size:20px}
+    .profile p{margin:0;color:var(--muted);font-size:14px}
+
+    .contact{margin-top:16px;display:flex;flex-direction:column;gap:8px}
+    .chip{display:inline-flex;gap:8px;align-items:center;padding:8px 10px;border-radius:999px;background:rgba(0,0,0,0.03);font-size:13px;color:var(--muted)}
+
+    /* ======= Main content ======= */
+    main{
+      background:var(--surface);
+      border-radius:var(--radius);
+      padding:var(--card-padding);
+      box-shadow:0 6px 18px rgba(12,20,40,0.04);
+    }
+
+    h2{margin-top:0}
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap:16px;
+    }
+    @media (max-width:640px){
+      .grid{grid-template-columns:1fr}
+    }
+
+    .card{
+      background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
+      padding:14px;border-radius:12px;border:1px solid rgba(0,0,0,0.04)
+    }
+
+    /* Skill bars (simple accessible pattern) */
+    .skill{display:flex;flex-direction:column;gap:8px}
+    .bar{
+      height:10px;border-radius:999px;background:rgba(0,0,0,0.06);overflow:hidden
+    }
+    .bar > i{display:block;height:100%;background:var(--accent);}
+
+    /* Footer small print */
+    footer{
+      /*This CSS line makes the element span all columns of the parent grid. */
+      grid-column: 1 / -1;
+      text-align:center;color:var(--muted);font-size:13px;padding:18px;
+    }
+
+    /* ======= Print styles (good for accessibility) =======
+       These styles simplify the page for printing: hide interactive cruft
+       and ensure readable black-on-white output. */
+    @media print{
+      :root{color-scheme: light}
+      body{background:white;padding:0}
+      header .controls, nav, .avatar{display:none}
+      .container{grid-template-columns:1fr;gap:8px}
+      main, .profile{box-shadow:none;border:none;background:transparent;padding:0}
+      a[href]:after{content:" (" attr(href) ")";font-size:11px}
+    }
+  </style>
+</head>
+<body>
+  <div class="container" id="page-root">
+    <header>
+      <div class="brand" aria-label="Site branding">
+        <div class="avatar" aria-hidden="true">JD</div>
+        <div>
+          <div style="font-weight:800">Jane Doe</div>
+          <div style="font-size:13px;color:var(--muted)">Frontend developer · Designer · Educator</div>
+        </div>
+      </div>
+
+      <div class="controls">
+        <nav role="navigation" aria-label="Primary">
+          <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#work">Work</a></li>
+            <li><a href="#skills">Skills</a></li>
+          </ul>
+        </nav>
+
+        <button class="btn" id="theme-toggle" aria-pressed="false" title="Toggle theme">Dark</button>
+
+        <a class="btn" href="resume.pdf" download="Jane-Doe-Resume.pdf" id="resume-link">Resume</a>
+      </div>
+    </header>
+
+    <aside class="profile" aria-labelledby="profile-heading">
+      <h1 id="profile-heading">Jane Doe</h1>
+      <p>Building thoughtful, accessible interfaces with HTML, CSS, and JavaScript.</p>
+
+      <div class="contact" aria-hidden="false">
+        <div class="chip" title="Location">New York, NY</div>
+        <div class="chip" title="Email">jane@example.com</div>
+        <div class="chip" title="Open to work">Open to collaborations</div>
+      </div>
+
+      <hr style="margin:14px 0;border:none;border-top:1px solid rgba(0,0,0,0.04)">
+
+      <div>
+        <strong>Quick highlights</strong>
+        <ul style="margin:8px 0 0 18px;color:var(--muted);font-size:14px">
+          <li>Semantic HTML & accessible navigation</li>
+          <li>Responsive layout with CSS grid</li>
+          <li>Theme switching and print styles</li>
+        </ul>
+      </div>
+    </aside>
+
+    <main>
+      <section id="about" class="card" aria-labelledby="about-heading">
+        <h2 id="about-heading">About</h2>
+        <p>
+          I’m a frontend developer focused on accessible, resilient interfaces.
+          I teach and build modular patterns that help teams ship inclusive products.
+        </p>
+      </section>
+
+      <section id="work" class="card" aria-labelledby="work-heading" style="margin-top:16px">
+        <h2 id="work-heading">Selected Work</h2>
+
+        <div class="grid" style="margin-top:12px">
+          <article class="card" aria-labelledby="p1">
+            <h3 id="p1">Design System Toolkit</h3>
+            <p style="color:var(--muted);font-size:14px">A modular, accessible component library used across internal apps.</p>
+          </article>
+
+          <article class="card" aria-labelledby="p2">
+            <h3 id="p2">Learning Portal</h3>
+            <p style="color:var(--muted);font-size:14px">Interactive lessons and exercises for neurodiverse learners.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="skills" class="card" aria-labelledby="skills-heading" style="margin-top:16px">
+        <h2 id="skills-heading">Skills</h2>
+
+        <div style="display:flex;flex-direction:column;gap:12px;margin-top:12px">
+          <div class="skill">
+            <div style="display:flex;justify-content:space-between">
+              <span>HTML</span><span style="color:var(--muted)">Advanced</span>
+            </div>
+            <div class="bar" aria-hidden="true"><i style="width:86%"></i></div>
+          </div>
+
+          <div class="skill">
+            <div style="display:flex;justify-content:space-between">
+              <span>CSS</span><span style="color:var(--muted)">Intermediate</span>
+            </div>
+            <div class="bar" aria-hidden="true"><i style="width:78%"></i></div>
+          </div>
+
+          <div class="skill">
+            <div style="display:flex;justify-content:space-between">
+              <span>JavaScript</span><span style="color:var(--muted)">Intermediate</span>
+            </div>
+            <div class="bar" aria-hidden="true"><i style="width:64%"></i></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="card" style="margin-top:16px">
+        <h2>Contact</h2>
+        <p style="color:var(--muted)">Prefer email for project inquiries. Open to mentorship and short workshops.</p>
+        <p><a href="mailto:jane@example.com">jane@example.com</a></p>
+      </section>
+
+    </main>
+
+    <footer>
+      <small>Built with semantic HTML, responsive CSS, and a tiny bit of JavaScript.</small>
+    </footer>
+
+  </div>
+
+  <script>
+    (function(){
+      const root = document.documentElement;
+      const btn = document.getElementById('theme-toggle');
+      const resumeLink = document.getElementById('resume-link');
+
+      // Initialize button label based on current theme preference
+      function getSystemPrefersDark(){
+        return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      }
+
+      // Try to restore user's choice if stored, otherwise use system preference
+      const saved = localStorage.getItem('theme');
+      if (saved === 'dark' || (!saved && getSystemPrefersDark())){
+        root.setAttribute('data-theme', 'dark');
+        btn.textContent = 'Light';
+        btn.setAttribute('aria-pressed', 'true');
+      }
+
+      btn.addEventListener('click', function(){
+        const isDark = root.getAttribute('data-theme') === 'dark';
+        if (isDark){
+          root.removeAttribute('data-theme');
+          localStorage.setItem('theme', 'light');
+          btn.textContent = 'Dark';
+          btn.setAttribute('aria-pressed', 'false');
+        } else {
+          root.setAttribute('data-theme','dark');
+          localStorage.setItem('theme', 'dark');
+          btn.textContent = 'Light';
+          btn.setAttribute('aria-pressed', 'true');
+        }
+      });
+
+      /* ======= Optional small enhancement:
+         Ensure keyboard users can jump to main content quickly. ======= */
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'k' && (e.ctrlKey || e.metaKey)) {
+          // Ctrl/Cmd + K focuses the nav for quick keyboard navigation
+          const nav = document.querySelector('nav a');
+          if (nav) nav.focus();
+        }
+      });
+
+      /* ======= Resume download accessibility: ======= */
+      resumeLink.addEventListener('click', (e) => {
+        // Example: track click in analytics or show a toast
+        // console.log('Resume clicked');
+      });
+
+    })();
+  </script>
+</body>
+</html>
