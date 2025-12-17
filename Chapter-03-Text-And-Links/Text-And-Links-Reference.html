@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Text Elements & Links</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400&family=Roboto:wght@400&family=Inconsolata:wght@400&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- CSS Variables for High Contrast --- */
+        :root {
+            --color-bg-body: #FFFFFF;
+            --color-text: #1A1A1A;
+            --color-accent: #000000;
+            --color-border: #DDDDDD;
+            --color-code-bg: #F5F5F5;
+            --color-highlight: #EEEEEE;
+            --font-family-main: 'Merriweather','Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            --font-family-code: 'Inconsolata','Consolas', 'Courier New', monospace;
+        }
+
+        body.dark-mode {
+            --color-bg-body: #121212;
+            --color-text: #E0E0E0;
+            --color-accent: #FAFAFA;
+            --color-border: #333333;
+            --color-code-bg: #222222;
+            --color-highlight: #333333;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: var(--font-family-main);
+            line-height: 1.7;
+            color: var(--color-text);
+            background-color: var(--color-bg-body);
+            padding: 20px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .container { max-width: 900px; margin: 0 auto; background: var(--color-bg-body); padding: 30px; }
+        header { border-bottom: 2px solid var(--color-accent); padding-bottom: 10px; margin-bottom: 30px; display: flex; justify-content: space-between; align-items: center; }
+
+        .theme-toggle-btn { padding: 8px 15px; border: 1px solid var(--color-accent); background-color: transparent; color: var(--color-text); cursor: pointer; border-radius: 6px; font-weight: bold; }
+
+        h1 { font-size: 2.2rem; color: var(--color-accent); }
+        h2 { font-size: 1.8rem; color: var(--color-accent); margin-top: 40px; margin-bottom: 15px; border-bottom: 2px solid var(--color-border); padding-bottom: 5px; }
+        
+        .content-table { width: 100%; border-collapse: collapse; margin: 25px 0; font-size: 0.95em; border: 1px solid var(--color-border); }
+        .content-table thead tr { background-color: var(--color-accent); color: var(--color-bg-body); text-align: left; }
+        .content-table th, .content-table td { padding: 12px 15px; border: 1px solid var(--color-border); }
+        .content-table tbody tr:nth-of-type(even) { background-color: var(--color-code-bg); }
+
+        .interactive-section { border: 2px dashed var(--color-accent); padding: 25px; margin: 30px 0; border-radius: 8px; text-align: center; background-color: var(--color-highlight); }
+        .run-button { padding: 10px 20px; background-color: var(--color-accent); color: var(--color-bg-body); border: none; border-radius: 4px; cursor: pointer; font-weight: bold; }
+        #result-output { margin-top: 20px; padding: 15px; border: 1px solid var(--color-accent); background-color: var(--color-bg-body); font-family: var(--font-family-code); min-height: 60px; }
+
+        .explanation-box { padding: 15px; border-left: 5px solid var(--color-accent); background-color: var(--color-highlight); margin-top: 15px; font-style: italic; }
+        footer { text-align: center; padding-top: 20px; margin-top: 40px; border-top: 1px solid var(--color-border); font-size: 0.9rem; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Text Elements & Links</h1>
+            <button id="theme-toggle" class="theme-toggle-btn">
+                <span class="icon">☀️</span> <span class="text">Dark Mode</span>
+            </button>
+        </header>
+
+        <section id="introduction">
+            <h2>The Anatomy of Content</h2>
+            <p>Text elements are the core of any web page. They provide hierarchy, meaning (semantics), and connectivity. For ADHD learners, focusing on the <strong>purpose</strong> of the tag helps it stick.</p>
+            <div class="explanation-box">
+                <strong>Micro-Win Strategy:</strong> Don't try to memorize all tags at once. Master the "Big Three" (Headings, Paragraphs, and Links) before moving to styling tags.
+            </div>
+        </section>
+
+        <section id="headings">
+            <h2>Heading Elements (h1-h6)</h2>
+            <p>Headings create a roadmap for the user and search engines. Use only one <code>&lt;h1&gt;</code> per page.</p>
+                        <table class="content-table">
+                <thead>
+                    <tr><th>Tag</th><th>Usage</th><th>Visual Hierarchy</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td><b>&lt;h1&gt;</b></td><td>Main Page Title</td><td>Largest / Most Important</td></tr>
+                    <tr><td><b>&lt;h2&gt;</b></td><td>Major Sections</td><td>Large</td></tr>
+                    <tr><td><b>&lt;h3&gt; - &lt;h6&gt;</b></td><td>Sub-sections</td><td>Decreasing size / Importance</td></tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="paragraphs">
+            <h2>The Paragraph Element</h2>
+            <table class="content-table">
+                <thead>
+                    <tr><th>Tag</th><th>Definition</th><th>Example</th></tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><b>&lt;p&gt;</b></td>
+                        <td>Defines a block of text. Browsers automatically add a margin before and after.</td>
+                        <td><code>&lt;p&gt;This is a paragraph.&lt;/p&gt;</code></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="links">
+            <h2>The Anchor (Link) Element</h2>
+            <p>Links are the "connective tissue" of the web. The <code>href</code> attribute is mandatory.</p>
+            <table class="content-table">
+                <thead>
+                    <tr><th>Attribute</th><th>Purpose</th><th>Example</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td><b>href</b></td><td>The destination URL.</td><td><code>&lt;a href="https://google.com"&gt;</b></td></tr>
+                    <tr><td><b>target="_blank"</b></td><td>Opens the link in a new tab.</td><td><code>&lt;a href="..." target="_blank"&gt;</b></td></tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="basic-style">
+            <h2>Stylistic Text Elements</h2>
+            <p>These tags change how text looks without necessarily adding "meaning" to the content.</p>
+            <table class="content-table">
+                <thead>
+                    <tr><th>Tag</th><th>Function</th><th>Visual Result</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td><b>&lt;b&gt;</b></td><td><b>Bold</b> text for attention.</td><td>Bolded</td></tr>
+                    <tr><td><b>&lt;i&gt;</b></td><td><i>Italic</i> text for technical terms/thoughts.</td><td>Italicized</td></tr>
+                    <tr><td><b>&lt;u&gt;</b></td><td><u>Underlined</u> text (use sparingly).</td><td>Underlined</td></tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="semantic-style">
+            <h2>Semantic Formatting Elements</h2>
+            <p>These tags tell the browser and screen readers that the text has specific <strong>importance</strong>.</p>
+            <table class="content-table">
+                <thead>
+                    <tr><th>Tag</th><th>Meaning</th><th>Usage</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td><b>&lt;strong&gt;</b></td><td>High Importance</td><td>Renders as <strong>Bold</strong></td></tr>
+                    <tr><td><b>&lt;em&gt;</b></td><td>Emphasized Stress</td><td>Renders as <em>Italics</em></td></tr>
+                    <tr><td><b>&lt;small&gt;</b></td><td>Side-comments</td><td>Smaller font size</td></tr>
+                    <tr><td><b>&lt;mark&gt;</b></td><td>Highlighted Text</td><td><mark>Yellow background</mark></td></tr>
+                    <tr><td><b>&lt;s&gt;</b></td><td>Inaccurate/Irrelevant</td><td><s>Strikethrough</s></td></tr>
+                    <tr><td><b>&lt;del&gt;</b> / <b>&lt;ins&gt;</b></td><td>Deleted / Inserted</td><td><del>Old</del> <ins>New</ins></td></tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="scripts">
+            <h2>Subscript & Superscript</h2>
+            <table class="content-table">
+                <thead>
+                    <tr><th>Tag</th><th>Definition</th><th>Visual Example</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td><b>&lt;sub&gt;</b></td><td>Subscript (Lower)</td><td>H<sub>2</sub>O</td></tr>
+                    <tr><td><b>&lt;sup&gt;</b></td><td>Superscript (Higher)</td><td>E = mc<sup>2</sup></td></tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="quotations">
+            <h2>Quotation & Citation Elements</h2>
+            <table class="content-table">
+                <thead>
+                    <tr><th>Tag</th><th>Definition</th><th>Note</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td><b>&lt;abbr&gt;</b></td><td>Abbreviation</td><td>Shows a tooltip on hover.</td></tr>
+                    <tr><td><b>&lt;address&gt;</b></td><td>Contact Information</td><td>Renders in italics.</td></tr>
+                    <tr><td><b>&lt;bdo&gt;</b></td><td>Bi-Directional Override</td><td>Reverses text direction.</td></tr>
+                    <tr><td><b>&lt;blockquote&gt;</b></td><td>Long Quote</td><td>Indented block.</td></tr>
+                    <tr><td><b>&lt;q&gt;</b></td><td>Short Inline Quote</td><td>Adds "quotation marks."</td></tr>
+                    <tr><td><b>&lt;cite&gt;</b></td><td>Work Title Citation</td><td>Used for books/films.</td></tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="live-demo">
+            <h2>Live Visual Feedback</h2>
+            <div class="interactive-section">
+                <button onclick="runConceptDemo()" class="run-button">Toggle Style Dopamine</button>
+                <div id="result-output">Click the button to cycle through text elements...</div>
+            </div>
+        </section>
+        
+        <footer>
+            <p>Keep Thinking Outside The Box: A Beginners Guide To HTML For ADHD Brains</p>
+        </footer>
+    </div>
+    
+    <script>
+        let step = 0;
+        function runConceptDemo() {
+            const output = document.getElementById('result-output');
+            const examples = [
+                '<strong>Strong importance!</strong>',
+                '<em>Emphasized text.</em>',
+                '<mark>Highlighted Micro-Win!</mark>',
+                'H<sub>2</sub>O and X<sup>2</sup>',
+                '<q>A short inline quote.</q>'
+            ];
+            output.innerHTML = examples[step % examples.length];
+            step++;
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const toggleButton = document.getElementById('theme-toggle');
+            const body = document.body;
+            toggleButton.addEventListener('click', () => {
+                const isDark = body.classList.toggle('dark-mode');
+                toggleButton.querySelector('.icon').textContent = isDark ? '🌙' : '☀️';
+                toggleButton.querySelector('.text').textContent = isDark ? 'Light Mode' : 'Dark Mode';
+            });
+        });
+    </script>
+</body>
+</html>
