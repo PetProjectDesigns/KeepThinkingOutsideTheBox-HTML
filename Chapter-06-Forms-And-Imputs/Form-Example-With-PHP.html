@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Form Submission Example</title>
+  </head>
+  <body>
+
+    <h1>An Example Submit_form.php Form</h1>
+    <p>This is an example of what an example <b>submit_form.php</b> form could look like.</p>
+
+    <form action="submit_form.php" method="post">
+
+      <!-- Textbox -->
+      <label for="username">Username:</label><br>
+      <input type="text" id="username" name="username" placeholder="Enter your username"><br><br>
+
+      <!-- TextArea -->
+      <label for="comments">Comments:</label><br>
+      <textarea id="comments" name="comments" placeholder="Enter your comments"></textarea><br><br>
+
+      <!-- Dropdown with options -->
+      <label for="options">Choose an option:</label><br>
+      <select id="options" name="options">
+        <option value="option1">Option 1</option>
+        <option value="option2">Option 2</option>
+      </select><br><br>
+
+      <!-- Submit Button -->
+      <input type="submit" value="Submit">
+
+    </form>
+
+    <p>For this example to work, you will also need a .php file called <b>submit_form.php</b> in the same directory as this page.</p>
+
+  </body>
+</html>
