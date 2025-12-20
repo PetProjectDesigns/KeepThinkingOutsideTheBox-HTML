@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript Data Types Demo</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 40px;
+      background: #f5f5f5;
+    }
+    .box {
+      background: #ffffff;
+      padding: 15px;
+      margin-bottom: 15px;
+      width: fit-content;
+    }
+    code {
+      background: #eee;
+      padding: 2px 4px;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>JavaScript Data Types Example</h1>
+  <p>This page shows three basic JavaScript data types: Number, String, and Boolean.</p>
+
+  <div id="output"></div>
+
+  <script>
+    // Your variables
+    const age = 25;        // Number
+    const greeting = "Hi"; // String
+    let isActive = true;   // Boolean
+
+    // Build a display message
+    const message = `
+      <div class="box"><strong>age:</strong> ${age} <br> <em>Type:</em> ${typeof age}</div>
+      <div class="box"><strong>greeting:</strong> "${greeting}" <br> <em>Type:</em> ${typeof greeting}</div>
+      <div class="box"><strong>isActive:</strong> ${isActive} <br> <em>Type:</em> ${typeof isActive}</div>
+    `;
+
+    // Insert into the page
+    document.getElementById("output").innerHTML = message;
+  </script>
+</body>
+</html>

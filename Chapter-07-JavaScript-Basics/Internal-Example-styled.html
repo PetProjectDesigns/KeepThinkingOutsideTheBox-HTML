@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Internal JavaScript Example Styled</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 40px;
+      background: #f7f7f7;
+    }
+    button {
+      padding: 12px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 6px;
+      border: none;
+      background-color: #4a90e2;
+      color: white;
+    }
+    button:hover {
+      background-color: #357ab8;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Internal JavaScript Demo</h1>
+  <p>Click the button below to trigger a JavaScript message.</p>
+
+  <button onclick="greet()">Click This Button</button>
+
+  <script>
+    function greet() {
+      alert('Welcome! You just clicked a button!');
+    }
+  </script>
+</body>
+</html>

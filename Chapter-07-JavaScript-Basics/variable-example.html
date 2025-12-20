@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript Variable Demo</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 40px;
+      background: #fafafa;
+    }
+    #message {
+      margin-top: 20px;
+      padding: 12px;
+      background: #e8f4ff;
+      width: fit-content;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>JavaScript Variable Example</h1>
+  <p>This page shows how a simple JavaScript variable works.</p>
+
+  <div id="message"></div>
+
+  <script>
+    let name = "Alice"; // Declares a variable
+
+    // Use the variable to update the webpage
+    document.getElementById("message").textContent =
+      "Hello, " + name + "! This message was created using a JavaScript variable.";
+  </script>
+</body>
+</html>

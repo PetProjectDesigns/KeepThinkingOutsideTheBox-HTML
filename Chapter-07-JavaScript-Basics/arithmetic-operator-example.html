@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript Arithmetic Operators Demo</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 40px;
+      background: #f5f5f5;
+    }
+    .box {
+      background: #ffffff;
+      padding: 15px;
+      margin-bottom: 15px;
+      border-left: 4px solid #4a90e2;
+      width: fit-content;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>JavaScript Arithmetic Example</h1>
+  <p>This page shows how JavaScript performs basic math operations.</p>
+
+  <div id="output"></div>
+
+  <script>
+    // Your arithmetic examples
+    const sumAddition = 5 + 10;        // Addition operator
+    const sumSubtraction = 5 - 3;      // Subtraction operator
+    const sumMultiplication = 5 * 10;  // Multiplication operator
+    const sumDivision = 5 / 2;         // Division operator
+
+    // Build the HTML output
+    const message = `
+      <div class="box"><strong>5 + 10 =</strong> ${sumAddition}</div>
+      <div class="box"><strong>5 - 3 =</strong> ${sumSubtraction}</div>
+      <div class="box"><strong>5 × 10 =</strong> ${sumMultiplication}</div>
+      <div class="box"><strong>5 ÷ 2 =</strong> ${sumDivision}</div>
+    `;
+
+    // Insert into the page
+    document.getElementById("output").innerHTML = message;
+  </script>
+</body>
+</html>
