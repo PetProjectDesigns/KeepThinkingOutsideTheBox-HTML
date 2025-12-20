@@ -1,0 +1,16 @@
+/* Apply a clean, readable font to the whole page */
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #f7f7f7;
+  padding: 40px;
+}
+
+/* Style the paragraph to make the effect obvious */
+p {
+  font-size: 18px;
+  color: #333;
+  background: #ffffff;
+  padding: 12px 16px;
+  border-left: 4px solid #4a90e2;
+  border-radius: 4px;
+}
