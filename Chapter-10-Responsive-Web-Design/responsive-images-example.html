@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Responsive Images Demo</title>
+
+  <style>
+    /* Base styling for the page */
+    body {
+      margin: 0;
+      font-family: sans-serif;
+      background-color: #f0f4f8;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    h1 {
+      margin-bottom: 1rem;
+    }
+
+    p {
+      margin-bottom: 2rem;
+    }
+
+    /* Style for all images */
+    img {
+      /* Prevent image overflow */
+      max-width: 100%;
+
+      /* Maintain aspect ratio */
+      height: auto;
+
+      /* Optional: rounded corners */
+      border-radius: 8px;
+
+      /* Optional: subtle shadow */
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Optional wrapper for spacing */
+    .image-section {
+      margin-bottom: 3rem;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Responsive Images Demo</h1>
+  <p>This page shows two ways to load different image sizes based on screen width.</p>
+
+  <!-- Using the <picture> element -->
+  <div class="image-section">
+    <h2>Using the &lt;picture&gt; Element</h2>
+    <picture>
+      <!-- Load small image for screens up to 600px wide -->
+      <source srcset="Place-Holder.png" media="(max-width: 600px)" />
+
+      <!-- Load medium image for screens up to 900px wide -->
+      <source srcset="Place-Holder.png" media="(max-width: 900px)" />
+
+      <!-- Default image for larger screens -->
+      <img src="Place-Holder.png" alt="Responsive Image using picture element" />
+    </picture>
+  </div>
+
+  <!-- Using the srcset attribute -->
+  <div class="image-section">
+    <h2>Using the srcset Attribute</h2>
+    <img
+      src="Place-Holder.png"
+      srcset="Place-Holder.png 600w, Place-Holder.png 900w"
+      sizes="(max-width: 600px) 100vw, (max-width: 900px) 50vw, 33vw"
+      alt="Responsive Image using srcset"
+    />
+  </div>
+</body>
+</html>

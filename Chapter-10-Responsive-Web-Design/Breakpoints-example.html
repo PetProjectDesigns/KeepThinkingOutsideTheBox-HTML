@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Media Queries Demo</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: sans-serif;
+      text-align: center;
+      padding: 2rem;
+    }
+
+    .box {
+      padding: 2rem;
+      border-radius: 8px;
+      color: white;
+      font-weight: bold;
+    }
+
+    @media (max-width: 600px) {
+      .box {
+        background-color: #e74c3c;
+      }
+      .box::after {
+        content: "Small Device";
+      }
+    }
+
+    @media (min-width: 601px) and (max-width: 900px) {
+      .box {
+        background-color: #f1c40f;
+      }
+      .box::after {
+        content: "Medium Device";
+      }
+    }
+
+    @media (min-width: 901px) {
+      .box {
+        background-color: #2ecc71;
+      }
+      .box::after {
+        content: "Large Device";
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Responsive Design with Media Queries</h1>
+  <p>Resize your browser to see the box change color and label based on screen size.</p>
+  <div class="box"></div>
+</body>
+</html>
